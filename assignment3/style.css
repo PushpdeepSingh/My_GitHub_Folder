@@ -1,0 +1,46 @@
+/*
+  style.css - Assignment 3 (CSS Cascade & Inheritance Demo)
+  ----------------------------------------------------------
+  Chapter 10 (CSS Basics):
+    - Demonstrates external CSS usage and the cascade order.
+  Chapter 11 (Colors):
+    - Sets base color properties that can be overridden by internal or inline styles.
+  Chapter 12 (Fonts & Text):
+    - Establishes font families and sizes that are inherited by child elements.
+*/
+
+/* External CSS for the <body>:
+   Demonstrates inheritance: the color and font-family set here will be inherited by child elements like <p> and <footer>.
+*/
+body {
+  color: rgb(190, 255, 212);
+  font-family: Arial, sans-serif;
+  background-color: #e3f2ff;
+}
+
+/* External CSS for <h1>:
+   Sets a base color (blue) and font-size.
+   Note: This rule is overridden by the internal style (green) and further by the inline style (red).
+*/
+h1 {
+  color: blue;
+  font-size: 2.5em;
+}
+
+/* External CSS for <p>:
+   Sets text properties for paragraphs.
+   These properties are inherited from the body unless explicitly overridden.
+*/
+p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* External CSS for <footer>:
+   Provides basic styling for the footer.
+   Child elements inside the footer inherit the font-family from the body.
+*/
+footer {
+  font-size: 0.9em;
+  color: #ffea00;
+}

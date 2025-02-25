@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 3 - CSS Cascade &amp; Inheritance Demo</title>
+
+  <!--
+    Chapter 10 (CSS Basics): External CSS.
+    Linking to the external stylesheet (style.css) that sets base styles.
+  -->
+  <link href="style.css" rel="stylesheet">
+
+  <!--
+    Chapter 10 (CSS Basics): Internal CSS.
+    This internal <style> block contains rules that override external styles when specificity is equal.
+  -->
+  <style>
+    /* Internal CSS for demonstrating the cascade:
+       Sets the <h1> color to green.
+       Note: This will be overridden by the inline style on the <h1> due to higher specificity.
+    */
+    h1 {
+      color: green;
+    }
+
+    /* Internal CSS for the footer:
+       Applies background color, padding, and centers text.
+       Child elements in the footer inherit font properties from the body.
+    */
+    footer {
+      background-color: #dedede;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Chapter 11 (Colors & Fonts): Inline CSS.
+    The inline style here (color: red; font-family: 'Times New Roman', serif) will override both
+    the external and internal CSS for this h1 element.
+  -->
+  <h1 style="color: pink; font-family: 'Times New Roman', serif;">
+    Welcome to My Chapter 5 Demo
+  </h1>
+
+  <p style="color: red; font-family: 'Times New Roman', serif;">
+    This paragraph should demonstrate <strong>inheritance</strong>.
+    The font-family and color set on the <code>body</code> (in external CSS) are automatically applied here,
+    unless explicitly overridden.
+  </p>
+  <p style="color: purple; font-family: 'Times New Roman', serif;">
+    Modify colors, fonts, text size, etc. in your external or internal CSS.
+    Observe how the CSS cascade and inheritance affect these paragraphs versus any inline-styled elements.
+  </p>
+
+  <!--
+    Demonstrating Cascade:
+    Although the external CSS might set a Blue color for <h1>,
+    the internal CSS sets it to green and the inline style on the <h1> overrides both with pink.
+    Inline styles have the highest specificity.
+  -->
+
+  <footer>
+    <p>&copy; 2025 My Demo Site</p>
+  </footer>
+</body>
+</html>
