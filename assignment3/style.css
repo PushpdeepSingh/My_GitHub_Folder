@@ -20,7 +20,7 @@ body {
 
 /* External CSS for <h1>:
    Sets a base color (blue) and font-size.
-   Note: This rule is overridden by the internal style (green) and further by the inline style (red).
+   Note: This rule is overridden by the internal style (green) and further by the inline style (pink).
 */
 h1 {
   color: blue;
