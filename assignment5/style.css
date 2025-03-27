@@ -58,6 +58,7 @@ body {
   
     nav ul {
       flex-direction: column;
+      justify-content: center;
     }
   }
   
