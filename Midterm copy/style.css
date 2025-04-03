@@ -37,8 +37,9 @@ header {
   background-size: cover;
   background-position: center;
   color: white;
-  padding: 50em 50em;
+  padding: 100em 100em;
   text-align: center;
+  min-height: 100vh;
 }
 
 nav a {
