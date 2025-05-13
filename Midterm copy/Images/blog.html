@@ -3,42 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fern and Foam - blog</title>
+  <title>Fern and Foam – Blog</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N9V8ZFH697"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-N9V8ZFH697');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9V8ZFH697"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N9V8ZFH697');
+  </script>
 </head>
 <body>
   <header class="header-background">
     <h1>Fern and Foam</h1>
     <nav>
-      <a href="index.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Home'});">Home</a>
-      <a href="about.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'About'});">About</a>
-      <a href="gallery.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Gallery'});">Gallery</a>
-      <a href="menu.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Menu'});">Menu</a>
-      <a href="affiliate.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Affiliate'});">Affiliates</a>
-      <a href="blog.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Blog'});">Blog</a>
+      <a href="index.html"    onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Home'});">Home</a>
+      <a href="about.html"    onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'About'});">About</a>
+      <a href="gallery.html"  onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Gallery'});">Gallery</a>
+      <a href="menu.html"     onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Menu'});">Menu</a>
+      <a href="affiliate.html"onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Affiliate'});">Affiliates</a>
+      <a href="blog.html"     onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Blog'});">Blog</a>
     </nav>
   </header>
-  <section>
-    <article>
-      <h2>Our Menu</h2>
-      <p>Check out our delicious offerings!</p>
-      <img src="https://images.unsplash.com/photo-1617298452285-ceb241df5c67?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Menu Image 1">
+
+  <main>
+    <article class="blog-article">
+      <h2>5 Tips for Perfect Pour Over</h2>
+      <p>Start with fresh beans, grind medium-fine, bloom for 30 seconds, then pour in concentric circles for even extraction. Use water just off the boil and maintain a steady pour. Experiment with grind size and ratio to find your perfect cup!</p>
+      <button
+        onclick="gtag('event','CTR',{event_category:'callToAction',event_label:'Read More Tips'});"
+      >Read More Tips</button>
     </article>
-  </section>
+  </main>
+
   <footer>
     <div class="footer-container">
       <div class="footer-left">
-        <img src="https://images.unsplash.com/photo-1587403090535-cbf88ede773a?q=80&w=2773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logo">
+        <img src="https://images.unsplash.com/photo-1587403090535-cbf88ede773a?q=80&w=2773" alt="Logo">
       </div>
       <div class="footer-center">
         <p>Fern and Foam</p>
