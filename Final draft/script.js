@@ -1,9 +1,27 @@
-const colors = ["#fdf6f0", "#fff7e6", "#f5fff5"];
-const userName = prompt("Welcome to Fern and Foam! What's your name?");
-const colorChoice = prompt("Pick a background color: 0 for cream, 1 for latte, 2 for mint");
-const userInfo = {
-  name: userName,
-  selectedColor: colors[colorChoice]
-};
-console.log("The first color in the array is:", colors[0]);
-document.body.style.backgroundColor = userInfo.selectedColor;
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Fetch stored values
+    let name = localStorage.getItem('fernName');
+    let theme = localStorage.getItem('fernTheme');
+  
+    // Prompt once if missing
+    if (!name) {
+      name = prompt('Welcome! What’s your name?') || 'Friend';
+      localStorage.setItem('fernName', name);
+    }
+    if (!theme) {
+      theme = confirm('Do you prefer dark mode?') ? 'dark' : 'light';
+      localStorage.setItem('fernTheme', theme);
+    }
+  
+    // Apply theme class to <body>
+    document.body.classList.add(theme + '-mode');
+  
+    // Insert greeting
+    const greetEl = document.querySelector('#greeting');
+    if (greetEl) {
+      greetEl.textContent = `Welcome back, ${name}!`;
+    }
+  });
+  
