@@ -29,7 +29,6 @@ body.dark-mode header {
 }
 
 body.dark-mode .header-background {
-  /* optionally darken the overlay */
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -39,7 +38,6 @@ body.dark-mode nav a {
 
 body.dark-mode .body-background {
   background-color: #2a2a2a;
-  /* fallback if image is hard to read */
 }
 
 body.dark-mode .order-btn {
