@@ -42,15 +42,3 @@ function getCookie(name) {
     // Show greeting if placeholder exists
     const welcomeEl = document.getElementById('welcome-message');
     if (welcomeEl) welcomeEl.textContent = `Welcome back, ${userName}!`;
-  
-    // Apply theme class
-    if (userTheme === 'dark') {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  
-    // Apply chosen background accent color
-    document.body.style.backgroundColor = userColor;
-  );
-  
