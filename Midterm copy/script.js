@@ -1,11 +1,3 @@
-Leo:
-	i’ll be free around 2
-
-Deep Singh:
-	Wya?
-
-Leo:
-	heading to campus now 
 	// Function to toggle between light mode and dark mode
 function changeTheme() {
     document.body.classList.toggle("dark-mode");
