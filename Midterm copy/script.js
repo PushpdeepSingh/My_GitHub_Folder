@@ -27,12 +27,7 @@ function getCookie(name) {
       userName = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
       setCookie('name', userName);
     }
-    if (!userTheme) {
-      userTheme = prompt("Do you prefer 1 - dark or 2 - light theme? (dark/light)").toLowerCase();
-      if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
-      setCookie('theme', userTheme);
-    }
-    if (!userColor) {
+
       const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark slate
       let idx;
       do {
@@ -57,5 +52,5 @@ function getCookie(name) {
   
     // Apply chosen background accent color
     document.body.style.backgroundColor = userColor;
-  });
+  );
   
