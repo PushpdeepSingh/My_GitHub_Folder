@@ -1,6 +1,6 @@
 // script.js
 
-// helper to read a cookie by name
+// Read a cookie by name
 function getCookie(name) {
   const match = document.cookie
     .split('; ')
@@ -8,17 +8,28 @@ function getCookie(name) {
   return match ? decodeURIComponent(match.split('=')[1]) : null;
 }
 
-// helper to write a cookie that lasts 7 days
+// Write a cookie lasting 7 days
 function setCookie(name, value) {
-  const maxAge = 60 * 60 * 24 * 7;
+  const maxAge = 60 * 60 * 24 * 7;  // seconds in 7 days
   document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // try to load the saved accent color
-  let userColor = getCookie('color');
+  // 1) Name
+  let userName = getCookie('userName');
+  if (!userName) {
+    userName = prompt("Welcome! What’s your name?") || 'Friend';
+    setCookie('userName', userName);
+  }
 
-  // if missing, prompt until they pick 0 or 1
+  // Display greeting if you have a welcome-message element
+  const welcomeEl = document.getElementById('welcome-message');
+  if (welcomeEl) {
+    welcomeEl.textContent = `Welcome back, ${userName}!`;
+  }
+
+  // 2) Accent Color
+  let userColor = getCookie('color');
   if (!userColor) {
     const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark slate
     let idx;
@@ -35,6 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setCookie('color', userColor);
   }
 
-  // apply the chosen accent color
+  // Apply the chosen accent color
   document.body.style.backgroundColor = userColor;
 });
