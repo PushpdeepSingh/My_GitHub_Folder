@@ -24,7 +24,7 @@ function getCookie(name) {
     // 4) If missing, prompt and store
     if (!userName || !userTheme) {
       userName  = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
-      userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
+      userTheme = prompt("1 for dark or 2 for light theme?").toLowerCase();
       if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
   
       setCookie('name', userName);
