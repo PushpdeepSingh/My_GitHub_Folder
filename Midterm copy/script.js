@@ -7,7 +7,7 @@ function changeTheme() {
 window.onload = function () {
   const hasSeenAlert = getCookie("seenAlert");
   if (!hasSeenAlert) {
-      alert("Welcome to my Chess Final Project with JavaScript!");
+      alert("Welcome to Fern and Foam!");
       document.cookie = `seenAlert=true; max-age=${60 * 60 * 24 * 7}; path=/`;
   }
 
