@@ -38,10 +38,13 @@ function getCookie(name) {
     }
   
     // 6) Apply theme class to <body>
+    const colors = ["#fdf6f0", "#023020"];
     if (userTheme === 'dark') {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
+        const userInfo = {
+            name: userName,
+            selectedColor: colors[colorChoice]
+          };
+          console.log("The first color in the array is:", colors[0]);
+          document.body.style.backgroundColor = userInfo.selectedColor;
   });
   
