@@ -37,15 +37,15 @@ function getCookie(name) {
         setCookie('theme', userTheme);
       }
   
-      // Color choice
-      const colors = ["#fdf6f0", "#fff7e6", "#f5fff5"]; // cream, latte, mint
+      // Color choice (only 2 options now)
+      const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark
       if (!userColor) {
         let idx;
         do {
           idx = parseInt(prompt(
-            "Pick a background accent color:\n0 = cream\n1 = latte\n2 = mint"
+            "Pick a background color:\n0 = cream\n1 = mint"
           ), 10);
-        } while (isNaN(idx) || idx < 0 || idx > colors.length - 1);
+        } while (isNaN(idx) || idx < 0 || idx > 1);
         userColor = colors[idx];
         setCookie('color', userColor);
       }
@@ -64,7 +64,7 @@ function getCookie(name) {
       document.body.classList.remove('dark-mode');
     }
   
-    // 5) Apply chosen background color accent
+    // 5) Apply chosen background color
     document.body.style.backgroundColor = userColor;
   });
   
