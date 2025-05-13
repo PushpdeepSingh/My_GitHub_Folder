@@ -2,12 +2,10 @@
 
 // Helper to read a cookie by name
 function getCookie(name) {
-  const cookies = document.cookie.split('; ');
-  for (let c of cookies) {
-    const [key, value] = c.split('=');
-    if (key === name) return decodeURIComponent(value);
-  }
-  return null;
+  return document.cookie
+    .split('; ')
+    .map(c => c.split('='))
+    .reduce((acc, [k, v]) => ({ ...acc, [k]: decodeURIComponent(v) }), {})[name] || null;
 }
 
 // Helper to write a cookie (7-day expiry)
@@ -17,25 +15,23 @@ function setCookie(name, value) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Try to read stored values
+  // 1) Try to read stored values
   let userName  = getCookie('name');
   let userTheme = getCookie('theme');
   let userColor = getCookie('color');
 
-  // If missing name, prompt and store it
+  // 2) If any are missing, prompt once and store
   if (!userName) {
     userName = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
     setCookie('name', userName);
   }
 
-  // If missing theme, prompt and store it
   if (!userTheme) {
     userTheme = prompt("Do you prefer dark or light theme? (dark/light)").toLowerCase();
     if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
     setCookie('theme', userTheme);
   }
 
-  // If missing color, prompt and store it
   if (!userColor) {
     const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark slate
     let idx;
@@ -48,17 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
     setCookie('color', userColor);
   }
 
-  // Show greeting if placeholder exists
+  // 3) Show greeting if placeholder exists
   const welcomeEl = document.getElementById('welcome-message');
-  if (welcomeEl) welcomeEl.textContent = `Welcome back, ${userName}!`;
+  if (welcomeEl) {
+    welcomeEl.textContent = `Welcome back, ${userName}!`;
+  }
 
-  // Apply theme class
+  // 4) Apply theme class
   if (userTheme === 'dark') {
     document.body.classList.add('dark-mode');
   } else {
     document.body.classList.remove('dark-mode');
   }
 
-  // Apply chosen background accent color
+  // 5) Apply chosen background accent color
   document.body.style.backgroundColor = userColor;
 });
