@@ -28,7 +28,7 @@ function getCookie(name) {
       setCookie('name', userName);
     }
     if (!userTheme) {
-      userTheme = prompt("Do you prefer dark or light theme? (dark/light)").toLowerCase();
+      userTheme = prompt("Do you prefer 1 - dark or 2 - light theme? (dark/light)").toLowerCase();
       if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
       setCookie('theme', userTheme);
     }
