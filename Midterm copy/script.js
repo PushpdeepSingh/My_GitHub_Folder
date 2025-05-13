@@ -1,51 +1,61 @@
-// script.js
+Leo:
+	i’ll be free around 2
 
-// Helper: read a cookie by name
+Deep Singh:
+	Wya?
+
+Leo:
+	heading to campus now 
+	// Function to toggle between light mode and dark mode
+function changeTheme() {
+    document.body.classList.toggle("dark-mode");
+}
+
+// Run this code when the page loads
+window.onload = function () {
+    const hasSeenAlert = getCookie("seenAlert");
+    if (!hasSeenAlert) {
+        alert("Welcome to my Chess Final Project with JavaScript!");
+        document.cookie = `seenAlert=true; max-age=${60 * 60 * 24 * 7}; path=/`;
+    }
+
+    console.log("CSS + JavaScript is powerful!");
+
+    let userName = getCookie("name");
+    if (!userName) {
+        userName = prompt("What is your name?");
+        document.cookie = `name=${encodeURIComponent(userName)}; max-age=${60 * 60 * 24 * 7}; path=/`;
+    } else {
+        const hasGreeted = getCookie("greeted");
+        if (!hasGreeted) {
+            alert(`Welcome back, ${userName}`);
+            document.cookie = `greeted=true; max-age=${60 * 60 * 24 * 7}; path=/`;
+        }
+        const welcome = document.getElementById("welcome-message");
+        if (welcome) {
+            welcome.textContent = `Welcome back, ${userName}`;
+        }
+    }
+
+    const userTheme = getCookie("theme");
+    if (!userTheme) {
+        const themePref = prompt("Do you prefer dark or light theme?").toLowerCase();
+        document.cookie = `theme=${themePref}; max-age=${60 * 60 * 24 * 7}; path=/`;
+    }
+
+    const finalTheme = getCookie("theme");
+    if (finalTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+};
+
+// Check and retrieve cookie values
 function getCookie(name) {
-  const cookies = document.cookie.split('; ');
-  for (let c of cookies) {
-    const [key, value] = c.split('=');
-    if (key === name) return decodeURIComponent(value);
-  }
-  return null;
+    const cookies = document.cookie.split("; ");
+    for (let c of cookies) {
+        const [key, value] = c.split("=");
+        if (key === name) return decodeURIComponent(value);
+    }
+    return null;
 }
 
-// Helper: set a cookie for `days` days
-function setCookie(name, value, days) {
-  const maxAge = days * 24 * 60 * 60;
-  document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/`;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // 1) Try to get existing cookies
-  let userName       = getCookie('name');
-  let selectedColor  = getCookie('selectedColor');
-
-  // 2) If missing, prompt and set them
-  if (!userName || !selectedColor) {
-    // Prompt for name
-    userName = prompt("Welcome to Fern and Foam! What's your name?") || 'Friend';
-    setCookie('name', userName, 7);
-
-    // Prompt for color choice
-    const colors = ["#fdf6f0", "#fff7e6", "#f5fff5"]; // cream, latte, mint
-    let idx;
-    do {
-      idx = parseInt(prompt(
-        "Pick a background color:\n0 = cream\n1 = latte\n2 = mint"
-      ), 10);
-    } while (isNaN(idx) || idx < 0 || idx > 2);
-
-    selectedColor = colors[idx];
-    setCookie('selectedColor', selectedColor, 7);
-  }
-
-  // 3) Apply greeting (requires an element <div id="welcome-message"></div> in your HTML)
-  const welcomeEl = document.getElementById('welcome-message');
-  if (welcomeEl) {
-    welcomeEl.textContent = `Welcome back, ${userName}!`;
-  }
-
-  // 4) Apply the background color
-  document.body.style.backgroundColor = selectedColor;
-});
