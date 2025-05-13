@@ -1,64 +1,47 @@
 // script.js
 
-// Helper: read a cookie by name
+// 1) Helper to read a cookie by name
 function getCookie(name) {
-    const cookies = document.cookie.split("; ");
+    const cookies = document.cookie.split('; ');
     for (let c of cookies) {
-      const [key, value] = c.split("=");
+      const [key, value] = c.split('=');
       if (key === name) return decodeURIComponent(value);
     }
     return null;
   }
   
-  // Function to toggle between light mode and dark mode
-  function changeTheme() {
-    document.body.classList.toggle("dark-mode");
-    const newTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-    document.cookie = `theme=${newTheme}; max-age=${60 * 60 * 24 * 7}; path=/`;
+  // 2) Helper to write a cookie (7-day expiry)
+  function setCookie(name, value) {
+    const maxAge = 60 * 60 * 24 * 7; // 7 days
+    document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/`;
   }
   
-  window.onload = function () {
-    // 1. Show welcome alert only once per week
-    const hasSeenAlert = getCookie("seenAlert");
-    if (!hasSeenAlert) {
-      alert("Welcome to Fern & Foam!");
-      document.cookie = `seenAlert=true; max-age=${60 * 60 * 24 * 7}; path=/`;
+  document.addEventListener('DOMContentLoaded', () => {
+    // 3) Try to read stored values
+    let userName  = getCookie('name');
+    let userTheme = getCookie('theme');
+  
+    // 4) If missing, prompt and store
+    if (!userName || !userTheme) {
+      userName  = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
+      userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
+      if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
+  
+      setCookie('name', userName);
+      setCookie('theme', userTheme);
     }
   
-    console.log("CSS + JavaScript is powerful!");
-  
-    // 2. Handle user name and greeting
-    let userName = getCookie("name");
-    if (!userName) {
-      userName = prompt("Welcome! What's your name?") || "Friend";
-      document.cookie = `name=${encodeURIComponent(userName)}; max-age=${60 * 60 * 24 * 7}; path=/`;
-    } else {
-      const hasGreeted = getCookie("greeted");
-      if (!hasGreeted) {
-        alert(`Welcome back, ${userName}!`);
-        document.cookie = `greeted=true; max-age=${60 * 60 * 24 * 7}; path=/`;
-      }
-    }
-    const welcomeEl = document.getElementById("welcome-message");
+    // 5) Show greeting if element exists
+    const welcomeEl = document.getElementById('welcome-message');
     if (welcomeEl) {
       welcomeEl.textContent = `Welcome back, ${userName}!`;
     }
   
-    // 3. Apply stored theme or ask if none
-    let theme = getCookie("theme");
-    if (!theme) {
-      theme = prompt("Do you prefer dark or light mode?").toLowerCase();
-      if (theme !== "dark" && theme !== "light") theme = "light";
-      document.cookie = `theme=${theme}; max-age=${60 * 60 * 24 * 7}; path=/`;
+    // 6) Apply theme class to <body>
+    if (userTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
     }
-    if (theme === "dark") {
-      document.body.classList.add("dark-mode");
-    }
-  
-    // 4. Wire up a theme-toggle button if present
-    const toggleBtn = document.getElementById("theme-toggle");
-    if (toggleBtn) {
-      toggleBtn.addEventListener("click", changeTheme);
-    }
-  };
+  });
   
