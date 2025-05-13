@@ -24,7 +24,7 @@ function getCookie(name) {
     // 4) If missing, prompt and store
     if (!userName || !userTheme) {
       userName  = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
-      userTheme = prompt("1 for dark or 2 for light theme?").toLowerCase();
+      userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
       if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
   
       setCookie('name', userName);
@@ -38,13 +38,10 @@ function getCookie(name) {
     }
   
     // 6) Apply theme class to <body>
-    const colors = ["#fdf6f0", "#023020"];
     if (userTheme === 'dark') {
-        const userInfo = {
-            name: userName,
-            selectedColor: colors[colorChoice]
-          };
-          console.log("The first color in the array is:", colors[0]);
-          document.body.style.backgroundColor = userInfo.selectedColor;
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   });
   
