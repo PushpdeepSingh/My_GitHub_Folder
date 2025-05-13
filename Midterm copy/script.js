@@ -32,20 +32,20 @@ function getCookie(name) {
   
       // Theme (dark/light)
       if (!userTheme) {
-        userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
+        userTheme = prompt("Do you prefer dark or light theme? (dark/light)").toLowerCase();
         if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
         setCookie('theme', userTheme);
       }
   
-      // Color choice (only 2 options now)
-      const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark
+      // Color choice (cream or dark accent)
+      const colors = ["#fdf6f0", "#36454F"]; // 0 = cream, 1 = dark slate
       if (!userColor) {
         let idx;
         do {
           idx = parseInt(prompt(
-            "Pick a background color:\n0 = cream\n1 = mint"
+            "Pick a background accent color:\n0 = cream\n1 = dark slate"
           ), 10);
-        } while (isNaN(idx) || idx < 0 || idx > 1);
+        } while (isNaN(idx) || idx < 0 || idx > colors.length - 1);
         userColor = colors[idx];
         setCookie('color', userColor);
       }
@@ -64,7 +64,7 @@ function getCookie(name) {
       document.body.classList.remove('dark-mode');
     }
   
-    // 5) Apply chosen background color
+    // 5) Apply chosen background color accent
     document.body.style.backgroundColor = userColor;
   });
   
