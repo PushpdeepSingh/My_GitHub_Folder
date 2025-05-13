@@ -1,6 +1,6 @@
 // script.js
 
-// 1) Helper to read a cookie by name
+// Helper to read a cookie by name
 function getCookie(name) {
     const cookies = document.cookie.split('; ');
     for (let c of cookies) {
@@ -10,38 +10,61 @@ function getCookie(name) {
     return null;
   }
   
-  // 2) Helper to write a cookie (7-day expiry)
+  // Helper to write a cookie (7-day expiry)
   function setCookie(name, value) {
     const maxAge = 60 * 60 * 24 * 7; // 7 days
     document.cookie = `${name}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/`;
   }
   
   document.addEventListener('DOMContentLoaded', () => {
-    // 3) Try to read stored values
+    // 1) Try to read stored values
     let userName  = getCookie('name');
     let userTheme = getCookie('theme');
+    let userColor = getCookie('color');
   
-    // 4) If missing, prompt and store
-    if (!userName || !userTheme) {
-      userName  = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
-      userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
-      if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
+    // 2) If missing any, prompt and store
+    if (!userName || !userTheme || !userColor) {
+      // Name
+      if (!userName) {
+        userName = prompt("Welcome to Fern & Foam! What's your name?") || 'Friend';
+        setCookie('name', userName);
+      }
   
-      setCookie('name', userName);
-      setCookie('theme', userTheme);
+      // Theme (dark/light)
+      if (!userTheme) {
+        userTheme = prompt("Do you prefer dark or light theme?").toLowerCase();
+        if (userTheme !== 'dark' && userTheme !== 'light') userTheme = 'light';
+        setCookie('theme', userTheme);
+      }
+  
+      // Color choice
+      const colors = ["#fdf6f0", "#fff7e6", "#f5fff5"]; // cream, latte, mint
+      if (!userColor) {
+        let idx;
+        do {
+          idx = parseInt(prompt(
+            "Pick a background accent color:\n0 = cream\n1 = latte\n2 = mint"
+          ), 10);
+        } while (isNaN(idx) || idx < 0 || idx > colors.length - 1);
+        userColor = colors[idx];
+        setCookie('color', userColor);
+      }
     }
   
-    // 5) Show greeting if element exists
+    // 3) Show greeting if element exists
     const welcomeEl = document.getElementById('welcome-message');
     if (welcomeEl) {
       welcomeEl.textContent = `Welcome back, ${userName}!`;
     }
   
-    // 6) Apply theme class to <body>
+    // 4) Apply theme class to <body>
     if (userTheme === 'dark') {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
+  
+    // 5) Apply chosen background color accent
+    document.body.style.backgroundColor = userColor;
   });
   

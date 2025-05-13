@@ -149,21 +149,3 @@ footer {
     background-size: contain;
   }
 }
-
-<!-- somewhere after your <header> -->
-<div id="welcome-message"></div>
-
-<!-- and ensure your CSS defines .dark-mode, e.g.: -->
-<style>
-  body.dark-mode {
-    background: #121212;
-    color: #f1f1f1;
-  }
-  body {
-    background: #ffffff;
-    color: #121212;
-  }
-</style>
-
-<!-- and include the script with `defer` -->
-<script src="script.js" defer></script>
