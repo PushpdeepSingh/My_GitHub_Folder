@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta name="description" content="About Fern & Foam: Our Story" />
-  <link rel="stylesheet" href="styles.css" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fern and Foam - About</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N9V8ZFH697');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N9V8ZFH697"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <title>Fern & Foam – About</title>
+  gtag('config', 'G-N9V8ZFH697');
+</script>
 </head>
 <body>
-  <header>
-    <h1>About Us</h1>
-    <div id="greeting"></div>
+  <header class="header-background">
+    <h1>Fern and Foam</h1>
     <nav>
       <a href="index.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Home'});">Home</a>
       <a href="about.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'About'});">About</a>
@@ -30,21 +28,35 @@
       <a href="blog.html" onclick="gtag('event','nav_click',{event_category:'navigation',event_label:'Blog'});">Blog</a>
     </nav>
   </header>
-
-  <main>
-    <section>
-      <h2>Our Mission</h2>
-      <p>At Fern & Foam we believe every cup tells a story...</p>
-      <button onclick="gtag('event','CTR',{event_category:'callToAction',event_label:'Learn More About Us'});">
-        Learn More
-      </button>
-    </section>
-  </main>
-
+  <section>
+    <article>
+      <h2>Our Story</h2>
+      <p>Welcome to Fern & Foam — a cozy, nature-inspired coffee haven where every cup tells a story. Rooted in simplicity and fueled by passion, we blend the earthy calm of a forest retreat with the vibrant energy of a neighborhood café. At Fern & Foam, we believe coffee is more than just a drink — it’s a daily ritual, a conversation starter, and a moment of pause in a busy world. That’s why we serve ethically sourced beans, craft every cup with care, and create an atmosphere where everyone feels at home.
+        Our name reflects who we are:🌿 Fern symbolizes growth, serenity, and the beauty of nature.
+        
+        ☕ Foam represents the warmth and creativity in every handcrafted drink. 
+        Whether you're here to sip slowly, catch up with friends, or fuel your next idea, we’re honored to be part of your journey. So take a seat, breathe deep, and enjoy something brewed just for you.
+        
+        Welcome to your new favorite place.
+        Welcome to Fern & Foam..</p>
+      <img src="https://plus.unsplash.com/premium_photo-1726797628912-64872f6123b3?q=80&w=2982&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cafe Image">
+    </article>
+  </section>
   <footer>
-    <p>&copy; 2025 Fern & Foam</p>
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="https://images.unsplash.com/photo-1587403090535-cbf88ede773a?q=80&w=2773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Logo">
+      </div>
+      <div class="footer-center">
+        <p>Fern and Foam</p>
+        <p>123 Adventure Lane, Hicksville, NY 11801</p>
+      </div>
+      <div class="footer-right">
+        <p>Open Hours:</p>
+        <p>Mon–Fri: 9am–6pm</p>
+        <p>Sat–Sun: 10am–4pm</p>
+      </div>
+    </div>
   </footer>
-
-  <script src="script.js" defer></script>
 </body>
 </html>
