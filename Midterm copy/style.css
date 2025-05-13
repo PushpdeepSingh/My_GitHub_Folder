@@ -1,137 +1,4 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-}
-
-header {
-  background-color: #003049;
-  color: white;
-  padding: 1em;
-  text-align: center;
-}
-
-.header-background {
-  background-image: url('https://images.unsplash.com/photo-1618105965240-9aa565e73a0a?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 2em 1em;
-  text-align: center;
-}
-
-.logo {
-  width: 80px;
-  height: auto;
-  margin-bottom: 10px;
-  border-radius: 50%;
-}
-
-.header-tagline {
-  font-size: 2em;
-  font-style: italic;
-  margin: 5em 0 1em;
-}
-
-.body-background {
-  background-image: url('https://images.unsplash.com/photo-1614439021983-05e44ce67650?q=80&w=2904&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 25em 25em;
-  text-align: center;
-}
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-article {
-  max-width: 800px;
-  margin: 20px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.grid-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.grid-gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.order-btn {
-  background-color: #6f4e37;
-  color: white;
-  padding: 12px 24px;
-  text-decoration: none;
-  font-size: 1.0em;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  margin: 10px;
-  display: inline-block;
-}
-
-.order-btn:hover {
-  background-color: #563a2f;
-}
-
-footer {
-  background-color: #6F4E37;
-  padding: 1em;
-  margin-top: 20px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.footer-left,
-.footer-center,
-.footer-right {
-  color:#fff;
-  flex: 1;
-  text-align: center;
-}
-
-.footer-left img {
-  width: 75px;
-  border-radius: 75%;
-}
-
-@media (max-width: 1024px) {
-  body { font-size: 17px; }
-}
-
-@media (max-width: 768px) {
-  body { font-size: 16px; padding: 10px; }
-  .grid-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* — your existing rules above — */
 
 @media (max-width: 480px) {
   nav a {
@@ -148,4 +15,48 @@ footer {
     padding: 10em 2em;
     background-size: contain;
   }
+}
+
+/* — DARK MODE OVERRIDES — */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode header {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.dark-mode .header-background {
+  /* optionally darken the overlay */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode nav a {
+  color: #f1f1f1;
+}
+
+body.dark-mode .body-background {
+  background-color: #2a2a2a;
+  /* fallback if image is hard to read */
+}
+
+body.dark-mode .order-btn {
+  background-color: #444;
+  color: #f1f1f1;
+}
+
+body.dark-mode .order-btn:hover {
+  background-color: #666;
+}
+
+body.dark-mode footer {
+  background-color: #222;
+}
+
+body.dark-mode .footer-left img,
+body.dark-mode .footer-center p,
+body.dark-mode .footer-right p {
+  filter: brightness(0.8);
 }
